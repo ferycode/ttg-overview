@@ -7,5 +7,14 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Fery Dedi Supardi",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "envoodoo": "^2.1.1",
+    "express": "^4.21.2",
+    "joi": "^17.13.3",
+    "mysql2": "^3.6.1",
+    "sequelize": "^4.44.4",
+    "sequelize-cli": "^4.1.1",
+    "winston": "^3.17.0"
+  }
 }
