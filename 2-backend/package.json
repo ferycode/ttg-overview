@@ -1,0 +1,11 @@
+{
+  "name": "backend-user-api",
+  "version": "1.0.0",
+  "description": "Simple Backend User API Using NodeJS & MySQL",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Fery Dedi Supardi",
+  "license": "ISC"
+}
