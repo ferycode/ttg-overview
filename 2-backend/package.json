@@ -9,6 +9,8 @@
   "author": "Fery Dedi Supardi",
   "license": "ISC",
   "dependencies": {
+    "chalk": "^4.1.2",
+    "cli-highlight": "^2.1.11",
     "envoodoo": "^2.1.1",
     "express": "^4.21.2",
     "joi": "^17.13.3",
