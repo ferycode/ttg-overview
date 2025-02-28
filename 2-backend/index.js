@@ -9,6 +9,7 @@ envoodoo(e => {
   const db = require('./app/models');
   const log = require('./lib/winston/logger');
   const requestLogger = require('./lib/middleware/request-logger');
+  const errorHandler = require('./lib/middleware/error-handler');
 
   const app = express();
   const cors = require('cors');
@@ -41,6 +42,8 @@ envoodoo(e => {
       author: 'Fery Dedi Supardi',
     });
   });
+
+  app.use(errorHandler);
 
   app.listen(PORT, () => {
     log.info(`Server is running on port ${PORT}`);
