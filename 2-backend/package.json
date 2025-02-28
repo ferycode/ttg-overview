@@ -4,7 +4,11 @@
   "description": "Simple Backend User API Using NodeJS & MySQL",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "db:migrate": "docker exec -it attendance_api npx sequelize-cli --config config/database.json db:migrate",
+    "db:rollback": "docker exec -it attendance_api npx sequelize-cli --config config/database.json db:migrate:undo",
+    "raw:db:migrate": "npx sequelize-cli --config config/database.json db:migrate",
+    "raw:db:rollback": "npx sequelize-cli --config config/database.json db:migrate:undo"
   },
   "author": "Fery Dedi Supardi",
   "license": "ISC",
