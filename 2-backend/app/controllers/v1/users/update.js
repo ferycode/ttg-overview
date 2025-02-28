@@ -1,6 +1,7 @@
 'use strict';
 
 const joi = require('joi');
+const { omit } = require('lodash');
 const db = require(__base + 'app/models');
 const response = require(__base + 'lib/common/response');
 
@@ -24,7 +25,7 @@ module.exports = async (req, res, next) => {
 
     return response.json(res, 200)({
       success: true,
-      data: user
+      data: omit(user.toJSON(), ['password']),
     });
   } catch (error) {
     next(error);

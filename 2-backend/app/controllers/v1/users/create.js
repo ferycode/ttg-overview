@@ -1,12 +1,15 @@
 'use strict';
 
 const joi = require('joi');
+const bcrypt = require('bcryptjs');
+const { omit } = require('lodash');
 const db = require(__base + 'app/models');
 const response = require(__base + 'lib/common/response');
 
 module.exports = async (req, res, next) => {
   const schema = joi.object().keys({
     email: joi.string().email().required(),
+    password: joi.string().min(6).optional(),
     name: joi.string().optional().allow(null, ''),
     phone: joi.string().optional().allow(null, ''),
     address: joi.string().optional().allow(null, ''),
@@ -23,8 +26,13 @@ module.exports = async (req, res, next) => {
     if (emailExist) {
       throw new Error('Email already exist');
     }
-  
-    const user = await db.User.create(params);
+
+    let password = null;
+    if (params.password) {
+      password = await bcrypt.hash(params.password, 10);
+    }
+
+    const user = await db.User.create({ ...params, password});
 
     if (!user) {
       throw new Error('Failed to create user');
@@ -32,7 +40,7 @@ module.exports = async (req, res, next) => {
 
     return response.json(res, 200)({
       success: true,
-      data: user
+      data: omit(user.toJSON(), ['password']),
     });
   } catch (error) {
     next(error);

@@ -13,6 +13,7 @@
   "author": "Fery Dedi Supardi",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^3.0.2",
     "chalk": "^4.1.2",
     "cli-highlight": "^2.1.11",
     "cors": "^2.8.5",

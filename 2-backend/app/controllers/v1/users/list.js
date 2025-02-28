@@ -33,6 +33,7 @@ module.exports = async (req, res, next) => {
 
     const { count, rows } = await db.User.findAndCountAll({
       where: conditions,
+      attributes: { exclude: ['password'] },
       offset: (params.page - 1) * params.perPage,
       limit: params.perPage,
     });
