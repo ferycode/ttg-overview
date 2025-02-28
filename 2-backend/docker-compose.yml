@@ -1,0 +1,43 @@
+services:
+  app:
+    build: .
+    container_name: backend_api
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - mysql
+    volumes:
+      - type: bind
+        source: .
+        target: /usr/src/app
+      - type: volume
+        source: node_modules
+        target: /usr/src/app/node_modules
+    networks:
+      - backend-network
+
+  mysql:
+    image: mysql:8.0
+    container_name: backend_mysql
+    ports:
+      - "33306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=ttg
+      - MYSQL_DATABASE=ttg_db
+      - MYSQL_USER=ttg
+      - MYSQL_PASSWORD=ttg
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - backend-network
+    command: --default-authentication-plugin=mysql_native_password
+
+networks:
+  backend-network:
+    driver: bridge
+
+volumes:
+  mysql_data:
+  node_modules:
