@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "db:migrate": "docker exec -it attendance_api npx sequelize-cli --config config/database.json db:migrate",
-    "db:rollback": "docker exec -it attendance_api npx sequelize-cli --config config/database.json db:migrate:undo",
+    "db:migrate": "docker exec -it backend_api npx sequelize-cli --config config/database.json db:migrate",
+    "db:rollback": "docker exec -it backend_api npx sequelize-cli --config config/database.json db:migrate:undo",
     "raw:db:migrate": "npx sequelize-cli --config config/database.json db:migrate",
     "raw:db:rollback": "npx sequelize-cli --config config/database.json db:migrate:undo"
   },
