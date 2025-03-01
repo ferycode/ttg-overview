@@ -1,4 +1,4 @@
-# Attendance API
+# Backend User API
 
 A RESTful API service for managing users data.
 
